@@ -26,7 +26,7 @@
  <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'código']);
+  _gaq.push(['_setAccount', 'UA-11642988-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
