@@ -16,7 +16,7 @@ Nosotros ahora no vamos a complicarnos pero para hacernos una idea en el pie de 
 - Créditos y (c).
 - Fotos.
 
-Otro elemento que debemos incluir en el pie - bueno en las últimas versiones de analytics pide colocarlo antes del cierre de la etiqueta </head> - es el código de tracking para controlar los accesos a nuestra web. Hablo lógicamente de Analitycs. 
+Otro elemento que debemos incluir en el pie - bueno en las últimas versiones de analytics pide colocarlo antes del cierre de la etiqueta {{{</head>}}} - es el código de tracking para controlar los accesos a nuestra web. Hablo lógicamente de Analitycs. 
 
 Vamos a ello.
 
@@ -134,7 +134,7 @@ Una vez configurado obtenemos el código que será algo así:
 Y lo integramos en el footer.
 
 {{{
-	   <div id="site-info">	
+<div id="site-info">	
 	<p>
 	<!-- Start of Flickr Badge -->
 	<style type="text/css">
