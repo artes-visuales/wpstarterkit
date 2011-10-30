@@ -41,6 +41,7 @@ function get_page_number() {
         print ' | ' . __( 'Page ' , 'your-theme') . get_query_var('paged');
     }
 } // end get_page_number
+?>
 }}}
 
 La primera función prepara a nuestro tema para ser traducido y que los archivos de la traducción se encuentran en nuestra carpeta de tema en una carpeta llamada languages.
