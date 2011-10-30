@@ -1,12 +1,7 @@
 #summary One-sentence summary of this page.
 #labels Phase-Implementation
 
-= Introduction =
-
-*Estructura HMTL*
-
-
-= Details =
+==Estructura HMTL==
 
 ===Estructura del código html.===
 AHORA ESTAMOS EMPEZANDO a entrar en la verdadera esencia de WordPress el desarrollo del tema: la estructura de codificación HTML
@@ -36,6 +31,7 @@ En el área principal de nuestro HTML tenemos dos columnas dentro de un div cont
 
 Hemos optado por dos columnas para simplificar la estructura contenedora. 
 
+{{{
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  
@@ -69,3 +65,4 @@ Hemos optado por dos columnas para simplificar la estructura contenedora.
  
 </body>
 </html>
+}}}
