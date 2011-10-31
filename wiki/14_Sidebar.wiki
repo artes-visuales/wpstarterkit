@@ -1,4 +1,6 @@
-*sidebar.php* es una de las páginas fundamentales de wodpress. 
+==sidebar.php==
+
+Es una de las páginas fundamentales de wodpress. 
 
 Para empezar vamos a personalizar las funciones de la barra lateral.
 
@@ -78,33 +80,102 @@ Seguimos cargando el menú:
 
 {{{
 <nav>
-<?php wp_nav_menu(array('menu'
-=> 'Categorias')); ?>
+<?php wp_nav_menu(array('menú' => 'Categorias')); ?>
 </nav>
 }}}
 
 Y a posteriori lo configuramos en wordpress. Para ello vamos a Apariencia > Menús, creamos el menú Categorias que se corresponde con el código de sidebar.php
 
-[http://stream.artesvisuales.com/images/]
+[http://stream.artesvisuales.com/images/wp_sidebar_menus_I.jpg]
 
 Seleccionamos las categorías que queremos mostrar y las añadimos al menú.
 
+[http://stream.artesvisuales.com/images/wp_sidebar_menus_II.jpg]
+
 Por último guardamos el menú y sus cambios de modo que se vería así:
 
+[http://stream.artesvisuales.com/images/wp_sidebar_menus_III.jpg]
+
 Ahora al previsualizar la página veríamos como son estas categorías las que se muestran en el sidebar.
-Cargar un rss externo:
+
+===Cargar un rss externo:===
+
 A mi esto me gusta controlarlo manualmente mediante código, de modo que el código es el siguiente:
-Página 3 de 7
+
+{{{
+               <div class="widget-rss"> <!-- Comienzo del RSS--> 
+
+                        <h4>FAQ</h4>
+                        
+                        <?php if (function_exists('fetch_feed')) { ?>
+                                
+                                <?php include_once(ABSPATH . WPINC . '/feed.php'); 
+                                
+                                      $feed = fetch_feed('feed://wordpress.org/news/feed/');
+                                
+                                          $limit = $feed->get_item_quantity(3);
+                                        
+                                          $items = $feed->get_items(0, $limit);
+                                        
+                                        if (!$items) {
+                                                
+                                                echo "problem";
+                                                
+                                        } else {
+                                                
+                                                // Mostramos las entradas del RSS
+                                                
+                                                foreach ($items as $item) { ?>
+                                                        
+                                                        <div class="sidebar-post">
+                                                                <p class="date"><?php echo $item->get_date('F j, Y'); ?></p>
+                                                                <h5><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h5>
+                                                                <p><?php echo $item->get_content(); ?></p>
+                                                        </div>
+                                                
+                                        <?php } 
+                                        
+                                    } ?>
+
+                        <?php } ?>
+
+                </div> <!-- Fin del RSS--> 
+}}}
+
 Debemos fijarnos como:
-• Mediante $feed = fetch_feed('feed://www.formspring.me/profile/artesvisuales.rss'); cargamos la fuente
+
+  * Mediante $feed = fetch_feed('feed://www.formspring.me/profile/artesvisuales.rss'); cargamos la fuente
 rss que vamos a leer.
-• Con $limit = $feed->get_item_quantity(5); seleccionamos el número de entradas que mostramos.
-• Por ultimo configuramos el estilo de las entradas mostradas.
-Y para finalizar la página vamos a los widget.
-Por último cerramos el div.
+  * Con $limit = $feed->get_item_quantity(5); seleccionamos el número de entradas que mostramos.
+  * Por ultimo configuramos el estilo de las entradas mostradas.
+
+Y para finalizar la página vamos a los widget. Por último cerramos el div.
+
+ {{{               
+     <div class="widget">  <!-- widget--> 
+       <?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Sidebar Widgets')) : else : ?>
+
+       <!-- Contenido que se muestra si no hay contenido en el widget I-->
+                
+       <?php endif; ?>    
+       <!-- Fin widget--> 
+         
+       <!-- Segundo widget-->       
+       <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Sidebar Widgets II") ) : else: ?>                 
+       <?php endif; ?> 
+      <!-- Fin segundo widget-->
+
+</div><!– #rightcol –> 
+}}}
+
 Bien tenemos la página lista ahora mediante wordpress vamos a cargar contenido en los widgets.
+
 Me voy al área de administración de widgets, arrastro el recuadro de texto a Sidebar Widgests I y dentro del
 mismo coloco el código de inserción de una página de facebook, como puedes ver en la imagen siguiente.
+
+[http://stream.artesvisuales.com/images/wp_sidebar_widgets_I.jpg]
+
+
 Página 4 de 7
 Ahora en el sidebar se muestra el contenido de nuestra página en facebook.
 Repito el proceso con twitter pero ahora colocando el código en Sidebar Widgets II.
