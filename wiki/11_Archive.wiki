@@ -30,9 +30,9 @@ Vamos a recuperar la estructura que anteriormente creamos para *single.php.*
 <?php get_footer(); ?>
 }}}
 
-The following is:
-  * A list
-  * Of bulleted items
+Esta es la secuencia de una plantilla de archivo:
+  * Se llama mediante the_post()
+  * Comprueba el tipo de plantilla de que se trata.
     # This is a numbered sublist
     # Which is done by indenting further
   * And back to the main bulleted list
