@@ -11,13 +11,13 @@ Abre header.php y copia el siguiente código.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 }}}
 
-Vamos a añadir algunos atributos de apertura html, de modo que coloque la etiqueta <html> con la siguiente línea:
+Vamos a añadir algunos atributos de apertura html, de modo que coloque la etiqueta {{{<html>}}} con la siguiente línea:
 
 {{{
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>
 }}}
 
-Una vez hechas las presentaciones vamos a entrar en la sección <head> del tema. Esta sección contiene meta información de la página web, como el título del documento, enlaces a las hojas de estilo o los feed RSS.
+Una vez hechas las presentaciones vamos a entrar en la sección {{{<head>}}} del tema. Esta sección contiene meta información de la página web, como el título del documento, enlaces a las hojas de estilo o los feed RSS.
 
 En primer lugar vamos a abrir el archivo *functions.php*, y a añadirle una función que nos será útil cuando creemos el título del documento.
 
@@ -50,7 +50,7 @@ La siguiente función get_page_number() como puedes ver se articula mediante un 
 
 Además si eres nuevo en php quédate con un detalle más. Cualquier cosa después de la doble barra // es usado como un comentario y por lo tanto obviado.
 
-Volvemos a la sección <head> de *header.php*. Complete head con el siguiente código:
+Volvemos a la sección {{{<head>}}} de *header.php*. Complete head con el siguiente código:
 
 {{{
 <head profile="http://gmpg.org/xfn/11">
@@ -86,9 +86,10 @@ Veamos lo que estamos haciendo.
  <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 }}}
 
-- Añadimos el código de google analytics justo antes del cierre de </head> para poder obtener estadísticas de tráfico de nuestro sitio.
+- Añadimos el código de google analytics justo antes del cierre de {{{</head>}}} para poder obtener estadísticas de tráfico de nuestro sitio.
 
-{{{<script type="text/javascript">
+{{{
+<script type="text/javascript">
  
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-11642988-1']);
