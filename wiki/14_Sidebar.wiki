@@ -1,3 +1,4 @@
+#labels Phase-Implementation
 ==sidebar.php==
 
 Es una de las páginas fundamentales de wodpress. 
@@ -180,7 +181,8 @@ Ahora en el sidebar se muestra el contenido de nuestra página en facebook.
 [http://stream.artesvisuales.com/images/wp_sidebar_widgets_II.jpg]
 
 Repito el proceso con twitter pero ahora colocando el código en Sidebar Widgets II.
-Página 5 de 7
+
+{{{
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
 new TWTR.Widget({
@@ -212,7 +214,6 @@ behavior: 'all'
 }
 }).render().setUser('usuario_twitter').start();
 </script>
-Página 6 de 7
-Así aparece el timeline de twitter en el sidebar.
+}}}
+
 El template está terminado, solo nos queda darle una estructura básica mediante css.
-Página 7 de 7
