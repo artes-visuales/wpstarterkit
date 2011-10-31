@@ -103,43 +103,43 @@ Ahora al previsualizar la página veríamos como son estas categorías las que s
 A mi esto me gusta controlarlo manualmente mediante código, de modo que el código es el siguiente:
 
 {{{
-   <div class="widget-rss"> <!-- Comienzo del RSS--> 
+<div class="widget-rss"> <!-- Comienzo del RSS--> 
 
-            <h4>FAQ</h4>
+    <h4>FAQ</h4>
+    
+    <?php if (function_exists('fetch_feed')) { ?>
             
-            <?php if (function_exists('fetch_feed')) { ?>
+            <?php include_once(ABSPATH . WPINC . '/feed.php'); 
+            
+                  $feed = fetch_feed('feed://wordpress.org/news/feed/');
+            
+                      $limit = $feed->get_item_quantity(3);
                     
-                    <?php include_once(ABSPATH . WPINC . '/feed.php'); 
+                      $items = $feed->get_items(0, $limit);
                     
-                          $feed = fetch_feed('feed://wordpress.org/news/feed/');
+                    if (!$items) {
+                            
+                            echo "problem";
+                            
+                    } else {
+                            
+                            // Mostramos las entradas del RSS
+                            
+                            foreach ($items as $item) { ?>
+                                    
+                                    <div class="sidebar-post">
+                                            <p class="date"><?php echo $item->get_date('F j, Y'); ?></p>
+                                            <h5><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h5>
+                                            <p><?php echo $item->get_content(); ?></p>
+                                    </div>
+                            
+                    <?php } 
                     
-                              $limit = $feed->get_item_quantity(3);
-                            
-                              $items = $feed->get_items(0, $limit);
-                            
-                            if (!$items) {
-                                    
-                                    echo "problem";
-                                    
-                            } else {
-                                    
-                                    // Mostramos las entradas del RSS
-                                    
-                                    foreach ($items as $item) { ?>
-                                            
-                                            <div class="sidebar-post">
-                                                    <p class="date"><?php echo $item->get_date('F j, Y'); ?></p>
-                                                    <h5><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h5>
-                                                    <p><?php echo $item->get_content(); ?></p>
-                                            </div>
-                                    
-                            <?php } 
-                            
-                        } ?>
+                } ?>
 
-            <?php } ?>
+    <?php } ?>
 
-    </div> <!-- Fin del RSS--> 
+</div> <!-- Fin del RSS--> 
 }}}
 
 Debemos fijarnos como:
