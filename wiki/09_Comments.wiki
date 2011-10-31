@@ -1,3 +1,4 @@
+#labels Phase-Implementation
 ==La plantilla de comentarios: comments.php==
 
 La plantilla de comentarios es una página compleja de realizar. Confusa.
