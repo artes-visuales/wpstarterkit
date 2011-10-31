@@ -30,20 +30,6 @@ Vamos a recuperar la estructura que anteriormente creamos para *single.php.*
 <?php get_footer(); ?>
 }}}
 
-Esta es la secuencia de una plantilla de archivo:
-  * Se llama mediante the_post()
-  * Comprueba el tipo de plantilla de que se trata.
-    # This is a numbered sublist
-    # Which is done by indenting further
-  * And back to the main bulleted list
-
- * This is also a list
- * With a single leading space
- * Notice that it is rendered
-  # At the same levels
-  # As the above lists.
- * Despite the different indentation levels.
-
 *Esta es la secuencia de una plantilla de archivo.*
   * Se llama mediante the_post()
   * Comprueba el tipo de plantilla de que se trata.
@@ -129,8 +115,12 @@ Listo.
 ===category.php===
 
 La plantilla de categoría es otra página fácil de hacer si partimos de una buena plantilla como archive.php. De modo que como ya hemos hecho en el caso anterior duplicamos archive.php y le cambiamos el nombre por category.php.
-Ahora abrimos functions.php.
-Vamos a colocar una función personalizada desde el tema Sandbox que va a hacer nuestra plantilla de categoría un poco más usable.
+
+Ahora abrimos *functions.php.*
+
+Vamos a colocar una función personalizada desde el tema Sandbox que va a hacer nuestra plantilla de categoría un poco más fiable.
+
+{{{
 // Para listar categorías en los archivos de categoría. Devuelve otras categorías salvo la actual para evitar redundancias.
 function cats_meow($glue) {
         $current_cat = single_cat_title( '', false );
@@ -147,8 +137,13 @@ function cats_meow($glue) {
  
         return trim(join( $glue, $cats ));
 } // end cats_meow
+}}}
+
 La función personalizada cats_meow() remueve la categoría actual de las páginas de categoría. En otras palabras se deshace de las categorías redundantes en la lista de categorías.
-Ahora y de nuevo en category.php reemplazamos la sección de título de la página con el siguiente código:
+
+Ahora y de nuevo en *category.php* reemplazamos la sección de título de la página con el siguiente código:
+
+{{{
 <h1 class="page-title"><?php _e( 'Category Archives:', 'your-theme' ) ?> <span><?php single_cat_title() ?></span></span></h1>
     <?php $categorydesc = category_description(); if ( !empty($categorydesc) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' ); ?>
 Y en el div .entry-utility remplace 
@@ -158,10 +153,17 @@ por:
    <span class="cat-links"><?php printf( __( 'Also posted in %s', 'your-theme' ), $cats_meow ) ?></span>
    <span class="meta-sep"> | </span>
 <?php endif ?>
-tag.php
+}}}
+
+===tag.php===
+
 Esta es la última de estas página especiales y está encargada de trabajar con las etiquetas.
+
 Como en la página anterior vamos a crearla a partir de archive.php de modo que copie esta página y cambie su nombre por tag.php.
-Vamos a utilizar de nuevo el tema Sandbox para utilizar una de las funciones definidas, abrimos por lo tanto functions.php y debajo de cats_meow copiamos el código:
+
+Vamos a utilizar de nuevo el tema Sandbox para utilizar una de las funciones definidas, abrimos por lo tanto *functions.php* y debajo de cats_meow copiamos el código:
+
+{{{
 // Para listas de tag y archivos. Devuelve otras salvo la actual para evitar redundancias.
 function tag_ur_it($glue) {
         $current_tag = single_tag_title( '', '',  false );
@@ -178,11 +180,24 @@ function tag_ur_it($glue) {
  
         return trim(join( $glue, $tags ));
 } // end tag_ur_it
-Salvamos y volvemos a tag.php y remplazamos el título de la página con:
+}}}
+
+Salvamos y volvemos a *tag.php* y remplazamos el título de la página con:
+
+{{{
 <h1 class="page-title"><?php _e( 'Tag Archives:', 'your-theme' ) ?> <span><?php single_tag_title() ?></span></h1>
+}}}
+
 y en .entry-utility remplace:
+
+{{{
 <?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged ', 'your-theme' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
+}}}
+
 por el código modificado:
+
+{{{
 <?php if ( $tag_ur_it = tag_ur_it(', ') ) : // Returns tags other than the one queried ?>                                               
   <span class="tag-links"><?php printf( __( 'Also tagged %s', 'your-theme' ), $tag_ur_it ) ?></span>
 <?php endif; ?>
+}}}
