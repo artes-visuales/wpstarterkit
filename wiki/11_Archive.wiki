@@ -45,12 +45,12 @@ Esta es la secuencia de una plantilla de archivo:
  * Despite the different indentation levels.
 
 *Esta es la secuencia de una plantilla de archivo.*
-* Se llama mediante the_post()
-* Comprueba el tipo de plantilla de que se trata.
-* Produce una plantilla adecuada.
-* Recopila los post con rewind_posts()
-* Se utiliza el loop de wordpress.
-* Este es el código que se encierra en el #content de archive.php. Empieza trabajando con las etiquetas condicionales para determinar el tipo de plantilla en la que estamos.
+  * Se llama mediante the_post()
+  * Comprueba el tipo de plantilla de que se trata.
+  * Produce una plantilla adecuada.
+  * Recopila los post con rewind_posts()
+  * Se utiliza el loop de wordpress.
+  * Este es el código que se encierra en el #content de archive.php. Empieza trabajando con las etiquetas condicionales para determinar el tipo de plantilla en la que estamos.
 
 {{{
 	<?php the_post(); ?>                    
