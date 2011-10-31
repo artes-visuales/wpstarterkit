@@ -1,0 +1,51 @@
+#labels Phase-Implementation
+==404.php==
+
+No es un agente secreto, es el código de un error.
+
+Un error 404 es el código de servidor cuando no puede encontrar una página, esto sucede también en wordpress cuando una url no está escrita correctamente. 
+
+En wordpress tenemos una plantilla específica para estos casos, se llama 404.php. 
+
+Obviamente podemos diseñar esta página de muchas maneras distintas pero hay una que funciona: pedimos disculpas - ya, ya sé que la culpa no es nuestra pero nunca está de más ser educado - e incluimos un formulario de búsqueda.
+
+Esta sería la forma más básica.
+
+En mi caso me gusta mostrar además mostrar alguna información adicional que nos permita reconducir al visitante.
+
+Recuperamos la estructura de la plantilla de plantillas explicada al comienzo del tema e incluimos el siguiente código dentro de la capa #maincol
+
+{{{
+<?php get_header(); ?>
+ 
+<div id="twocols"> 
+	 <div id="maincol">
+ 
+        <h1>No se encuentra, Error 404</h1>
+		<p>Lo lamento pero no encontramos lo que busca. <br/>
+		Puede ver la estructura del sitio para navegar por ella:</p>
+ 
+		<p><?php get_search_form(); ?></p>
+ 
+		<b>Páginas:</b>
+			<ul>
+				<?php wp_list_pages('title_li='); ?>
+			</ul>
+ 
+		<b>Categorías:</b>
+			<ul>
+				<?php wp_list_cats('sort_column=name'); ?>
+			</ul>       
+ 
+	</div><!-- #maincol -->       
+ 
+	<?php get_sidebar(); ?> 
+ 
+</div><!-- #twocols -->
+ 
+<?php get_footer(); ?>
+}}}
+
+¿Pensabas que sería más complicado?. Pues no. El resultado es que cuando el servidor no encuentra una página devuelve además de un mensaje advirtiéndolo un listado de las páginas y categorías del sitio.
+￼
+Así mismo podría ser una buena idea incluir un formulario de búsqueda para que la persona pueda iniciar un proceso para buscar la información.
