@@ -1,3 +1,4 @@
+#labels Phase-Implementation
 ==La página de archivo: archive.php==
 
 Una de las características de una web, especialmente de un blog, es que guarda información. Wordpress tiene una página especial para este fin denominada archive.php. Pero además esta página, al igual que anteriormente index.php, nos puede servir como template para otras páginas similares como attachment.php, author.php, category.php.
@@ -30,12 +31,12 @@ Vamos a recuperar la estructura que anteriormente creamos para *single.php.*
 }}}
 
 *Esta es la secuencia de una plantilla de archivo.*
-- Se llama mediante the_post()
-- Comprueba el tipo de plantilla de que se trata.
-- Produce una plantilla adecuada.
-- Recopila los post con rewind_posts()
-- Se utiliza el loop de wordpress.
-- Este es el código que se encierra en el #content de archive.php. Empieza trabajando con las etiquetas condicionales para determinar el tipo de plantilla en la que estamos.
+* Se llama mediante the_post()
+* Comprueba el tipo de plantilla de que se trata.
+* Produce una plantilla adecuada.
+* Recopila los post con rewind_posts()
+* Se utiliza el loop de wordpress.
+* Este es el código que se encierra en el #content de archive.php. Empieza trabajando con las etiquetas condicionales para determinar el tipo de plantilla en la que estamos.
 
 {{{
 	<?php the_post(); ?>                    
