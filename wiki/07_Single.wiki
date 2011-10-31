@@ -58,7 +58,7 @@ Comenzamos cargando hearder.php, abrimos las capas de twocols y maincol, y carga
 
 ===Single Post Titles===
 
-Por supuesto debe ocupar una parte relevante dentro del contenido de la página de modo que lo cargamos arropándolo con la etiqueta <h1>
+Por supuesto debe ocupar una parte relevante dentro del contenido de la página de modo que lo cargamos arropándolo con la etiqueta {{{<h1>}}}
 
 {{{
  <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
